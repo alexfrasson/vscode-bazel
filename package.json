@@ -131,6 +131,15 @@
                     "default": [],
                     "markdownDescription": "A list of [Bazel startup options](https://docs.bazel.build/versions/master/command-line-reference.html#startup-options) to use when building, running tests, running queries, or cleaning. One option per entry, no shell escaping is needed."
                 },
+                "bazel.commandLine.syncOptions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "default": [],
+                    "markdownDescription": "A list of [Sync options](https://docs.bazel.build/versions/master/command-line-reference.html#query) to use when running queries. One option per entry, no shell escaping is needed."
+                },
                 "bazel.commandLine.commandArgs": {
                     "type": "array",
                     "items": {

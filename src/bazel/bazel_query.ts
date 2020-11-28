@@ -118,6 +118,11 @@ export class BazelQuery extends BazelCommand {
   private run(additionalOptions: string[] = []): Promise<Buffer> {
     const bazelConfig = vscode.workspace.getConfiguration("bazel");
     const queriesShareServer = bazelConfig.get<boolean>("queriesShareServer");
+    const bazelConfigCmdLine = vscode.workspace.getConfiguration(
+      "bazel.commandLine",
+    );
+    const syncOptions = bazelConfigCmdLine.get<string[]>("syncOptions");
+    additionalOptions = additionalOptions.concat(syncOptions);
     let additionalStartupOptions: string[] = [];
     if (!queriesShareServer) {
       // If not sharing the Bazel server, use a custom output_base.
